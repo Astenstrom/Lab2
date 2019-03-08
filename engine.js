@@ -1,5 +1,6 @@
 'use strict';
 
+//We should not be changing this file. Only game.js
 class StateMachine {
   constructor (initState) {
     this.timeStep = 0;
