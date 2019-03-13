@@ -18,10 +18,10 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         function () { 
             //initialize game
             //Create an array to store ingredients 
-            var mixingBowl = [];
+            mixingBowl = [];
 
             //Variable to store the baking result
-            var bakingResult;
+            bakingResult = "";
         },
         function () { // third is the update function
             console.log("state1 has only an update function");
@@ -40,6 +40,8 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#bakingArea").show();
             $("#start").hide();
             $("#result").show();
+            $("#bowl").show();
+            $("#dish").text("");
             $("#ingredient").text("Choose a flour:");
             $("#bttn1").text("All Purpose Flour");
             $("#bttn2").text("Bread Flour");
@@ -50,6 +52,10 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         },
         function () {
             console.log(mixingBowl);
+            $("#bowl").animate({
+                left: '250px',
+                right: '250px'
+            });
         }
     );
     var state3 = new State("Rising Agent",
@@ -85,6 +91,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     var state5 = new State("Baking Complete",
         function () {
             $("#bakingArea").hide();
+            $("#bowl").hide();
             bakeItem();
             $("#dish").text("Baking Complete... You baked: " + bakingResult);
             $("#replay").show();
@@ -109,15 +116,19 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     function bakeItem() {
         if (mixingBowl[0] == "All Purpose Flour" && mixingBowl[1] == "Baking Powder" && mixingBowl[2] == "325") {
             bakingResult = "Cake";
+            $("#cake").show();
         } 
         else if (mixingBowl[0] == "Bread Flour" && mixingBowl[1] == "Yeast" && mixingBowl[2] == "400") {
             bakingResult = "Bread";
+            $("#bread").show();
         } 
         else if (mixingBowl[0] == "Pastry Flour" && mixingBowl[1] == "Baking Soda" && mixingBowl[2] == "350") {
             bakingResult = "Cookies";
+            $("#cookie").show();
         } 
         else {
             bakingResult = "Fail";
+            $("#fail").show();
         }
     }
 
@@ -128,11 +139,12 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     });
     
     $("#bttn-replay").click(function () {
-        machine.change(state1);
         $("#bakingArea").hide();
         $("#replay").hide();
         $("#result").hide();
         $("#start").show();
+        $("img").hide();
+        machine.change(state1);
         machine.update();
     });
 

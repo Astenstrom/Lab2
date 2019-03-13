@@ -5,41 +5,49 @@
     <title>Baking Simulator</title>
     <meta name="description" content="Anna Malecki and Alana Pendleton LMC6313 Lab 2">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <link rel="icon" type="image/png" href="/icons/logo_small.png" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
-      
+
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
-      
-  </head>
-  <body>
-      <h1>Baking Simulator</h1>
-      
+
+<!--Icons from https://www.iconfinder.com/iconsets/bakery-10-->
+
+</head>
+
+<body>
+    <h1>Baking Simulator</h1>
+
     <div class="text-center" id="start">
-      <button class="btn btn-secondary" id="bttn">Begin Baking</button>
-      
+        <button class="btn btn-secondary" id="bttn">Begin Baking</button>
+
     </div>
     <div class="text-center" id="bakingArea">
         <h2 id="ingredient">Ingredient</h2>
-      <button class="btn btn-secondary" id="bttn1">Option 1</button>
-      <button class="btn btn-secondary" id="bttn2">Option 2</button>
-      <button class="btn btn-secondary" id="bttn3">Option 3</button>
-      
+        <button class="btn btn-secondary" id="bttn1">Option 1</button>
+        <button class="btn btn-secondary" id="bttn2">Option 2</button>
+        <button class="btn btn-secondary" id="bttn3">Option 3</button>
     </div>
-      
+
     <div class="text-center" id="result">
         <p id="output"></p>
+        <img id="bowl" style="display:none;" src="/icons/mixingbowl.png">
         <p id="dish"></p>
-      
+        <img id="fail" style="display:none;" src="/icons/fail.png">
+        <img id="cake" style="display:none;" src="/icons/cake.png">
+        <img id="cookie" style="display:none;" src="/icons/cookie.png">
+        <img id="bread" style="display:none;" src="/icons/bread.png">
+
     </div>
-      
+
     <div class="text-center" id="replay">
         <button class="btn btn-secondary" id="bttn-replay">Play Again</button>
     </div>
-      
-  </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="engine.js"></script>
-  <script src="game.js"></script>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="engine.js"></script>
+<script src="game.js"></script>
 </html>
