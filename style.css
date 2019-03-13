@@ -1,0 +1,21 @@
+h1 {
+    color: darkcyan;
+    text-align: center;
+    padding-bottom: 30px;
+    margin: 20px;
+    font-family: 'Noto Serif JP', serif;
+}
+
+h2 {
+    color: darkslategrey;
+    text-align: center;
+    padding-bottom: 30px;
+    margin: 20px;
+    font-family: 'Noto Serif JP', serif;
+}
+
+p {
+    color: darkcyan;
+    margin: 20px;
+    font-family: 'Noto Serif JP', serif;
+}

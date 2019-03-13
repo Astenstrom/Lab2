@@ -4,6 +4,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
 
     //Hide the baking area until game begins
     $("#bakingArea").hide();
+    $("#replay").hide();
 
     //Create an array to store ingredients 
     var mixingBowl = [];
@@ -14,7 +15,14 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     // In this version, you create new states like this
     // States are created as new objects, and take four parameters. first is a string name
     var state1 = new State("Begin",
-        null, // The second is the enter function
+        function () { 
+            //initialize game
+            //Create an array to store ingredients 
+            var mixingBowl = [];
+
+            //Variable to store the baking result
+            var bakingResult;
+        },
         function () { // third is the update function
             console.log("state1 has only an update function");
             machine.change(state2);
@@ -31,6 +39,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             console.log("Entering State 2");
             $("#bakingArea").show();
             $("#start").hide();
+            $("#result").show();
             $("#ingredient").text("Choose a flour:");
             $("#bttn1").text("All Purpose Flour");
             $("#bttn2").text("Bread Flour");
@@ -78,6 +87,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#bakingArea").hide();
             bakeItem();
             $("#dish").text("Baking Complete... You baked: " + bakingResult);
+            $("#replay").show();
         },
         function () {
 
@@ -115,6 +125,15 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     $("#bttn").click(function () {
         machine.update();
         $('#output').text("Mixing Bowl: ");
+    });
+    
+    $("#bttn-replay").click(function () {
+        machine.change(state1);
+        $("#bakingArea").hide();
+        $("#replay").hide();
+        $("#result").hide();
+        $("#start").show();
+        machine.update();
     });
 
     //Update the mixing bowl with the ingredient corresponding to button 1
