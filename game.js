@@ -52,15 +52,13 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         },
         function () {
             console.log(mixingBowl);
-            $("#bowl").animate({
-                left: '250px',
-                right: '250px'
-            });
+            playGif();
         }
     );
     var state3 = new State("Rising Agent",
         function () {
             console.log("Entering State 3");
+            //stopGif();
             $("#ingredient").text("Choose a rising agent:");
             $("#bttn1").text("Yeast");
             $("#bttn2").text("Baking Powder");
@@ -71,6 +69,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         },
         function () {
             console.log("state3 end");
+            playGif();
         }
     );
     var state4 = new State("Baking Temperature",
@@ -86,6 +85,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         },
         function () {
             console.log("state 4 end");
+            playGif();
         }
     );
     var state5 = new State("Baking Complete",
@@ -130,6 +130,16 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             bakingResult = "Fail";
             $("#fail").show();
         }
+    }
+    
+    function playGif(){
+        var src = $("#bowl").attr("src");
+        $("#bowl").attr("src", src.replace(/\.png$/i, ".gif"));
+    }
+    
+    function stopGif(){
+        var src = $("#bowl").attr("src");
+          $("#bowl").attr("src", src.replace(/\.gif$/i, ".png"));
     }
 
     // when the button is clicked, update the state machine
