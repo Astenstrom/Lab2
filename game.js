@@ -154,6 +154,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         $("#result").hide();
         $("#start").show();
         $("img").hide();
+        stopGif();
         machine.change(state1);
         machine.update();
     });
