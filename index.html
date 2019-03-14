@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Baking Simulator</title>
     <meta name="description" content="Anna Malecki and Alana Pendleton LMC6313 Lab 2">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="logo_small.png" />
 
+    <link rel="stylesheet" type="text/css" href="https://loading.io/css/loading.css"/>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="loading.css"/>
+
     <link href="style.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
 
-<!--Icons from https://www.iconfinder.com/iconsets/bakery-10-->
+    <!--Icons from https://www.iconfinder.com/iconsets/bakery-10-->
 
 </head>
 
@@ -27,17 +30,17 @@
     </div>
     <div class="text-center" id="bakingArea">
         <h2 id="ingredient">Ingredient</h2>
-        <button class="btn-secondary" id="bttn1">Option 1</button>
-        <button class="btn-secondary" id="bttn2">Option 2</button>
-        <button class="btn-secondary" id="bttn3">Option 3</button>
+            <button class="btn-secondary" style="animation-duration:0.5s" id="bttn1">Option 1</button>
+            <button class="btn-secondary ld-slide-ttb" id="bttn2">Option 2</button>
+            <button class="btn-secondary ld-slide-ttb" id="bttn3">Option 3</button>
     </div>
 
     <div class="text-center" id="result">
-        <p id="output"></p>
+        <p id="output" class="mixingBowl"></p>
         <img id="bowl" style="display:none;" src="mixingbowl.png">
-        <img class="gif" id="bowlAdded" style="display:none;" src="mix.gif">
-        
+
         <p id="dish"></p>
+        <p id="pun"></p>
         <img id="fail" style="display:none;" src="fail.png">
         <img id="cake" style="display:none;" src="cake.png">
         <img id="cookie" style="display:none;" src="cookie.png">
@@ -53,4 +56,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="engine.js"></script>
 <script src="game.js"></script>
+
 </html>

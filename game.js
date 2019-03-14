@@ -93,7 +93,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#bakingArea").hide();
             $("#bowl").hide();
             bakeItem();
-            $("#dish").text("Baking Complete... You baked: " + bakingResult);
+            $("#dish").text("Baking Complete... " + bakingResult);
             $("#replay").show();
         },
         function () {
@@ -115,17 +115,30 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     //Function to determine what item was baked
     function bakeItem() {
         if (mixingBowl[0] == "All Purpose Flour" && mixingBowl[1] == "Baking Powder" && mixingBowl[2] == "325") {
-            bakingResult = "Cake";
+            bakingResult = "You made Cake!";
             $("#cake").show();
         } 
         else if (mixingBowl[0] == "Bread Flour" && mixingBowl[1] == "Yeast" && mixingBowl[2] == "400") {
-            bakingResult = "Bread";
+            bakingResult = "You made Bread!";
             $("#bread").show();
         } 
         else if (mixingBowl[0] == "Pastry Flour" && mixingBowl[1] == "Baking Soda" && mixingBowl[2] == "350") {
-            bakingResult = "Cookies";
+            bakingResult = "You made Cookies!";
             $("#cookie").show();
-        } 
+        }
+        //If you have the right ingredients but use too high a temperature your cake will burn
+        else if (mixingBowl[0] == "All Purpose Flour" && mixingBowl[1] == "Baking Powder" && mixingBowl[2] == "400") {
+            bakingResult = "You burnt your cake!";
+            //Use the code below to add a pun for a scenario
+            $("#pun").text("It's your birthday you can cry if you want to.");
+            $("#fail").show();
+        }
+        //If you forgot yeast in the bread flow it wont rise
+        else if (mixingBowl[0] == "Bread Flour" && (mixingBowl[1] == "Baking Powder" || mixingBowl[1] == "Baking Soda") && mixingBowl[2] == "400") {
+            bakingResult = "Your bread didn't rise!";
+            $("#fail").show();
+        }
+        //any other fail scenarios
         else {
             bakingResult = "Fail";
             $("#fail").show();
@@ -145,7 +158,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     // when the button is clicked, update the state machine
     $("#bttn").click(function () {
         machine.update();
-        $('#output').text("Your Mixing Bowl:");
+        $('#output').text("Your Mixing Bowl: ");
     });
     
     $("#bttn-replay").click(function () {
@@ -170,6 +183,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         }
         machine.update();
         $('#output').text("Your Mixing Bowl:" + mixingBowl);
+        //$('#bttn1').toggleClass('ld ld-slide-ttb paused');
     });
 
     //Update the mixing bowl with the ingredient corresponding to button 2
