@@ -182,7 +182,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             mixingBowl[2] = "400";
         }
         machine.update();
-        $('#output').text("Your Mixing Bowl:" + mixingBowl);
+        $('#output').text("Your Mixing Bowl: " + mixingBowl);
         //$('#bttn1').toggleClass('ld ld-slide-ttb paused');
     });
 
@@ -196,7 +196,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             mixingBowl[2] = "325";
         }
         machine.update();
-        $('#output').text("Your Mixing Bowl:" + mixingBowl);
+        $('#output').text("Your Mixing Bowl: " + mixingBowl);
     });
 
     //Update the mixing bowl with the ingredient corresponding to button 3
@@ -209,6 +209,6 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             mixingBowl[2] = "350";
         }
         machine.update();
-        $('#output').text("Your Mixing Bowl:" + mixingBowl);
+        $('#output').text("Your Mixing Bowl: " + mixingBowl);
     });
 });

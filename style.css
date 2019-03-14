@@ -13,8 +13,7 @@ h2 {
     text-align: center;
     padding-bottom: 30px;
     margin: 20px;
-    font-family: 'Noto Serif JP', serif;
-  
+    font-family: 'Montserrat', sans-serif;  
 }
 
 p {
@@ -34,8 +33,7 @@ img {
 .mixingBowl {
     color: lightcoral;
     margin-top: 50px;
-    font-family: 'Noto Serif JP', serif;
-    padding: 5px;
+    font-family: 'Montserrat', sans-serif;    padding: 5px;
     margin: 5px;
     font-size: 1.2rem;
 }
