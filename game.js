@@ -29,6 +29,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         },
         function () {
             console.log("exiting state 1");
+            $("#starterImages").hide();
         } // fourth is the exit function
     );
 
