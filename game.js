@@ -125,13 +125,13 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     //Function to determine what item was baked
     function bakeItem() {
         if (mixingBowl[0] == "All Purpose Flour" && mixingBowl[1] == "Baking Powder" && mixingBowl[2] == "325") {
-            bakingResult = "You made Cake!";
+            bakingResult = "It doesn't get any batter than this! You made Cake!";
             $("#cake").show();
         } else if (mixingBowl[0] == "Bread Flour" && mixingBowl[1] == "Yeast" && mixingBowl[2] == "400") {
-            bakingResult = "You made Bread!";
+            bakingResult = "You must be butter, because you're on a roll! You made Bread!";
             $("#bread").show();
         } else if (mixingBowl[0] == "Pastry Flour" && mixingBowl[1] == "Baking Soda" && mixingBowl[2] == "350") {
-            bakingResult = "You made Cookies!";
+            bakingResult = "It's a batch made in heaven! You made Cookies!";
             $("#cookie").show();
         }
         //If you have the right ingredients but use too high a temperature your cake will burn
@@ -143,12 +143,12 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         }
         //If you forgot yeast in the bread flow it wont rise
         else if (mixingBowl[0] == "Bread Flour" && (mixingBowl[1] == "Baking Powder" || mixingBowl[1] == "Baking Soda") && mixingBowl[2] == "400") {
-            bakingResult = "Your bread didn't rise!";
+            bakingResult = "Your bread didn't rise! No knead to fret!You can try and bake again!";
             $("#fail").show();
         }
         //any other fail scenarios
         else {
-            bakingResult = "Fail";
+            bakingResult = "Uh oh! Your cookie crumbled. You can try again dough!";
             $("#fail").show();
         }
     }
