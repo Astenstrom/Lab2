@@ -42,7 +42,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#result").show();
             $("#bowl").show();
             $("#dish").text("");
-            $("#ingredient").text("Choose a flour:");
+            $("#ingredient").text("Choose a flour to add to your mixing bowl");
             $("#bttn1").text("All Purpose Flour");
             $("#bttn2").text("Bread Flour");
             $("#bttn3").text("Pastry Flour");
@@ -59,7 +59,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         function () {
             console.log("Entering State 3");
             //stopGif();
-            $("#ingredient").text("Choose a rising agent:");
+            $("#ingredient").text("Choose a rising agent to add to your mixing bowl");
             $("#bttn1").text("Yeast");
             $("#bttn2").text("Baking Powder");
             $("#bttn3").text("Baking Soda");
@@ -75,7 +75,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     var state4 = new State("Baking Temperature",
         function () {
             console.log("Entering State 4");
-            $("#ingredient").text("Choose a baking temperature:");
+            $("#ingredient").text("Now choose the baking temperature");
             $("#bttn1").text("400");
             $("#bttn2").text("325");
             $("#bttn3").text("350");
@@ -145,7 +145,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     // when the button is clicked, update the state machine
     $("#bttn").click(function () {
         machine.update();
-        $('#output').text("Mixing Bowl: ");
+        $('#output').text("Your Mixing Bowl:");
     });
     
     $("#bttn-replay").click(function () {
@@ -169,7 +169,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             mixingBowl[2] = "400";
         }
         machine.update();
-        $('#output').text("Mixing Bowl: " + mixingBowl);
+        $('#output').text("Your Mixing Bowl:" + mixingBowl);
     });
 
     //Update the mixing bowl with the ingredient corresponding to button 2
@@ -182,7 +182,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             mixingBowl[2] = "325";
         }
         machine.update();
-        $('#output').text("Mixing Bowl: " + mixingBowl);
+        $('#output').text("Your Mixing Bowl:" + mixingBowl);
     });
 
     //Update the mixing bowl with the ingredient corresponding to button 3
@@ -195,6 +195,6 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             mixingBowl[2] = "350";
         }
         machine.update();
-        $('#output').text("Mixing Bowl: " + mixingBowl);
+        $('#output').text("Your Mixing Bowl:" + mixingBowl);
     });
 });

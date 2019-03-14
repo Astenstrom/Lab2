@@ -1,4 +1,5 @@
 h1 {
+    padding-top: 50px;
     color: darkcyan;
     text-align: center;
     padding-bottom: 60px;
@@ -18,8 +19,10 @@ h2 {
 
 p {
     color: darkcyan;
-    margin: 20px;
+    margin-top: 50px;
     font-family: 'Noto Serif JP', serif;
+    font-size: 1.2rem;
+    
 }
 
 img{
@@ -51,3 +54,4 @@ img{
   background-color: #008080;
   border-color: transparent;
 }
+
