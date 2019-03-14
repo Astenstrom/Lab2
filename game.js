@@ -22,6 +22,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
 
             //Variable to store the baking result
             bakingResult = "";
+            $("#starterImages").show();
         },
         function () { // third is the update function
             console.log("state1 has only an update function");
@@ -166,6 +167,9 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         $("#bakingArea").hide();
         $("#replay").hide();
         $("#result").hide();
+        $("#output").hide();
+        $("#dish").hide();
+        $("#pun").hide();
         $("#start").show();
         $("img").hide();
         stopGif();
