@@ -11,18 +11,24 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
 
     //Variable to store the baking result
     var bakingResult;
+    var pun;
 
     // In this version, you create new states like this
     // States are created as new objects, and take four parameters. first is a string name
     var state1 = new State("Begin",
-        function () { 
+        function () {
             //initialize game
             //Create an array to store ingredients 
             mixingBowl = [];
 
             //Variable to store the baking result
             bakingResult = "";
+            pun = "";
             $("#starterImages").show();
+            $("#bounceBread").show();
+            $("#bounceCake").show();
+            $("#bounceCookie").show();
+
         },
         function () { // third is the update function
             console.log("state1 has only an update function");
@@ -44,6 +50,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#result").show();
             $("#bowl").show();
             $("#dish").text("");
+            $("#pun").text("");
             $("#ingredient").text("Choose a flour to add to your mixing bowl");
             $("#bttn1").text("All Purpose Flour");
             $("#bttn2").text("Bread Flour");
@@ -96,6 +103,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#bowl").hide();
             bakeItem();
             $("#dish").text("Baking Complete... " + bakingResult);
+            $("#pun").text(pun);
             $("#replay").show();
         },
         function () {
@@ -119,12 +127,10 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         if (mixingBowl[0] == "All Purpose Flour" && mixingBowl[1] == "Baking Powder" && mixingBowl[2] == "325") {
             bakingResult = "You made Cake!";
             $("#cake").show();
-        } 
-        else if (mixingBowl[0] == "Bread Flour" && mixingBowl[1] == "Yeast" && mixingBowl[2] == "400") {
+        } else if (mixingBowl[0] == "Bread Flour" && mixingBowl[1] == "Yeast" && mixingBowl[2] == "400") {
             bakingResult = "You made Bread!";
             $("#bread").show();
-        } 
-        else if (mixingBowl[0] == "Pastry Flour" && mixingBowl[1] == "Baking Soda" && mixingBowl[2] == "350") {
+        } else if (mixingBowl[0] == "Pastry Flour" && mixingBowl[1] == "Baking Soda" && mixingBowl[2] == "350") {
             bakingResult = "You made Cookies!";
             $("#cookie").show();
         }
@@ -132,7 +138,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         else if (mixingBowl[0] == "All Purpose Flour" && mixingBowl[1] == "Baking Powder" && mixingBowl[2] == "400") {
             bakingResult = "You burnt your cake!";
             //Use the code below to add a pun for a scenario
-            $("#pun").text("It's your birthday you can cry if you want to.");
+            pun = "It's your birthday you can cry if you want to.";
             $("#fail").show();
         }
         //If you forgot yeast in the bread flow it wont rise
@@ -146,15 +152,15 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#fail").show();
         }
     }
-    
-    function playGif(){
+
+    function playGif() {
         var src = $("#bowl").attr("src");
         $("#bowl").attr("src", src.replace(/\.png$/i, ".gif"));
     }
-    
-    function stopGif(){
+
+    function stopGif() {
         var src = $("#bowl").attr("src");
-          $("#bowl").attr("src", src.replace(/\.gif$/i, ".png"));
+        $("#bowl").attr("src", src.replace(/\.gif$/i, ".png"));
     }
 
     // when the button is clicked, update the state machine
@@ -162,14 +168,11 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         machine.update();
         $('#output').text("Your Mixing Bowl: ");
     });
-    
+
     $("#bttn-replay").click(function () {
         $("#bakingArea").hide();
         $("#replay").hide();
         $("#result").hide();
-        $("#output").hide();
-        $("#dish").hide();
-        $("#pun").hide();
         $("#start").show();
         $("img").hide();
         stopGif();
@@ -188,7 +191,6 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         }
         machine.update();
         $('#output').text("Your Mixing Bowl: " + mixingBowl);
-        //$('#bttn1').toggleClass('ld ld-slide-ttb paused');
     });
 
     //Update the mixing bowl with the ingredient corresponding to button 2

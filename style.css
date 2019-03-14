@@ -20,7 +20,7 @@ p {
     color: darkcyan;
     margin-top: 50px;
     padding: 5px;
-    padding-bottom: 23px;
+/*    padding-bottom: 23px;*/
     margin: 5px;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
@@ -37,6 +37,10 @@ img {
     font-family: 'Montserrat', sans-serif;    padding: 5px;
     margin: 5px;
     font-size: 1.2rem;
+}
+
+.starterImage {
+    margin-top: 50px;
 }
 
 .btn-secondary {
