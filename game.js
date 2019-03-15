@@ -136,19 +136,19 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         }
         //If you have the right ingredients but use too high a temperature your cake will burn
         else if (mixingBowl[0] == "All Purpose Flour" && mixingBowl[1] == "Baking Powder" && mixingBowl[2] == "400") {
-            bakingResult = "You burnt your cake!";
+            bakingResult = "Oh no – Your cake is in tiers!";
             //Use the code below to add a pun for a scenario
-            pun = "It's your birthday you can cry if you want to.";
+            pun = "Try again. We know you're a whisk taker!";
             $("#fail").show();
         }
         //If you forgot yeast in the bread flow it wont rise
         else if (mixingBowl[0] == "Bread Flour" && (mixingBowl[1] == "Baking Powder" || mixingBowl[1] == "Baking Soda") && mixingBowl[2] == "400") {
-            bakingResult = "Your bread didn't rise! No knead to fret!You can try and bake again!";
+            bakingResult = "Your bread didn't rise, but you knead not fret! You can try again!";
             $("#fail").show();
         }
         //any other fail scenarios
         else {
-            bakingResult = "Uh oh! Your cookie crumbled. You can try again dough!";
+            bakingResult = "Uh oh – Your cookie crumbled. You can try again dough!";
             $("#fail").show();
         }
     }
