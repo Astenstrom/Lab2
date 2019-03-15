@@ -12,6 +12,11 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     //Variable to store the baking result
     var bakingResult;
     var pun;
+    var score = 0;
+    var bakedCake = 0;
+    var bakedCookie = 0;
+    var bakedBread = 0;
+    var tryCount = 0;
 
     // In this version, you create new states like this
     // States are created as new objects, and take four parameters. first is a string name
@@ -28,6 +33,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#bounceBread").show();
             $("#bounceCake").show();
             $("#bounceCookie").show();
+            updateScore();
 
         },
         function () { // third is the update function
@@ -51,7 +57,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#bowl").show();
             $("#dish").text("");
             $("#pun").text("");
-            $("#ingredient").text("Choose a flour to add to your mixing bowl");
+            $("#ingredient").text("Choose a flour to add to your mixing bowl:");
             $("#bttn1").text("All Purpose Flour");
             $("#bttn2").text("Bread Flour");
             $("#bttn3").text("Pastry Flour");
@@ -68,7 +74,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         function () {
             console.log("Entering State 3");
             //stopGif();
-            $("#ingredient").text("Choose a rising agent to add to your mixing bowl");
+            $("#ingredient").text("Choose a rising agent to add to your mixing bowl:");
             $("#bttn1").text("Yeast");
             $("#bttn2").text("Baking Powder");
             $("#bttn3").text("Baking Soda");
@@ -84,10 +90,10 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     var state4 = new State("Baking Temperature",
         function () {
             console.log("Entering State 4");
-            $("#ingredient").text("Now choose the baking temperature");
-            $("#bttn1").text("400");
-            $("#bttn2").text("325");
-            $("#bttn3").text("350");
+            $("#ingredient").text("Now choose the baking temperature:");
+            $("#bttn1").text("325");
+            $("#bttn2").text("350");
+            $("#bttn3").text("400");
         },
         function () {
             changeToState(state5);
@@ -122,16 +128,54 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     // pass it the initial state, like so
     var machine = new StateMachine(state1);
 
+    //Function that increments the score when an item is baked and colors in the icons
+    function updateScore() {
+        if (bakedCake == 1) {
+            score++;
+            bakedCake++;
+            $("#bounceCake").attr("src", "cake.png");
+            $("#score").text("Recipes Completed: " + score);
+        }
+        if (bakedBread == 1) {
+            score++;
+            bakedBread++;
+            $("#bounceBread").attr("src", "bread.png");
+            $("#score").text("Recipes Completed: " + score);
+        }
+        if (bakedCookie == 1) {
+            score++;
+            bakedCookie++;
+            $("#bounceCookie").attr("src", "cookie.png");
+            $("#score").text("Recipes Completed: " + score);
+        }
+        
+        if (score == 3) {
+            endGame();
+            console.log("Reached End Game");
+        } 
+    }
+
+    function endGame() {
+        $("#instructions").text("You got baked! All three items completed!");
+        $("#score").text("It took you " + tryCount + " trys.");
+        $("#replay").hide();
+        $("#start").hide();
+    }
+
     //Function to determine what item was baked
     function bakeItem() {
+        tryCount++;
         if (mixingBowl[0] == "All Purpose Flour" && mixingBowl[1] == "Baking Powder" && mixingBowl[2] == "325") {
             bakingResult = "It doesn't get any batter than this! You made Cake!";
             $("#cake").show();
+            bakedCake++;
         } else if (mixingBowl[0] == "Bread Flour" && mixingBowl[1] == "Yeast" && mixingBowl[2] == "400") {
             bakingResult = "You must be butter, because you're on a roll! You made Bread!";
             $("#bread").show();
+            bakedBread++;
         } else if (mixingBowl[0] == "Pastry Flour" && mixingBowl[1] == "Baking Soda" && mixingBowl[2] == "350") {
             bakingResult = "It's a batch made in heaven! You made Cookies!";
+            bakedCookie++;
             $("#cookie").show();
         }
         //If you have the right ingredients but use too high a temperature your cake will burn
@@ -187,7 +231,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         } else if (machine.currentState.name == "Rising Agent") {
             mixingBowl[1] = "Yeast";
         } else if (machine.currentState.name == "Baking Temperature") {
-            mixingBowl[2] = "400";
+            mixingBowl[2] = "325";
         }
         machine.update();
         $('#output').text("Your Mixing Bowl: " + mixingBowl);
@@ -200,7 +244,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         } else if (machine.currentState.name == "Rising Agent") {
             mixingBowl[1] = "Baking Powder";
         } else if (machine.currentState.name == "Baking Temperature") {
-            mixingBowl[2] = "325";
+            mixingBowl[2] = "350";
         }
         machine.update();
         $('#output').text("Your Mixing Bowl: " + mixingBowl);
@@ -213,7 +257,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         } else if (machine.currentState.name == "Rising Agent") {
             mixingBowl[1] = "Baking Soda";
         } else if (machine.currentState.name == "Baking Temperature") {
-            mixingBowl[2] = "350";
+            mixingBowl[2] = "400";
         }
         machine.update();
         $('#output').text("Your Mixing Bowl: " + mixingBowl);
