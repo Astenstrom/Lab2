@@ -148,11 +148,11 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#bounceCookie").attr("src", "cookie.png");
             $("#score").text("Recipes Completed: " + score);
         }
-        
+
         if (score == 3) {
             endGame();
             console.log("Reached End Game");
-        } 
+        }
     }
 
     function endGame() {
@@ -262,4 +262,5 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         machine.update();
         $('#output').text("Your Mixing Bowl: " + mixingBowl);
     });
+
 });
