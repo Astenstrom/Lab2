@@ -167,7 +167,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#score").text("Recipes Completed: " + score);
         }
 
-        if (score == 3) {
+        if (score == 4) {
             endGame();
             console.log("Reached End Game");
         }
