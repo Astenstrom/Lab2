@@ -8,12 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="logo_small.png" />
 
-    <link rel="stylesheet" type="text/css" href="https://loading.io/css/loading.css" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link href="style.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://loading.io/css/loading.css" />
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -26,12 +25,12 @@
 <body>
     <!-- Button trigger modal -->
     <div>
-    <button type="button" class="hintButton" data-toggle="modal" data-target="#exampleModal">
-        Baking Hints
-    </button>
+        <button type="button" class="hintButton" data-toggle="modal" data-target="#helpModal">Help</button>
     </div>
-    
-    <div><h1>Bake the World a Better Place</h1></div> 
+
+    <div>
+        <h1>Bake the World a Better Place</h1>
+    </div>
 
     <div id="starterImages" class="text-center">
         <p id="instructions">See if you have what it takes to bake the items below!</p>
@@ -74,31 +73,31 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal" id="helpModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Baking Hints</h5>
+                    <h5 class="modal-title">Baking Hints</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <h3>Flour</h3>
                 <div class="modal-body">
-                Flour is finely milled wheat or grains that is used for structural support in baked goods. Choosing the right flour for the right task will help your baked goods stand tall! Protein content is the main differentiator in different flours; higher protein flours provide more strength. All purpose flour has a moderate amount of protein making it the most flexible. Pastry flour has a low protein count, making it great for softer baked goods like pies, tarts, and cookies. Bread flour has the highest protein content making it strong enough to support yeasted breads.
-                    </div>
-                
+                    Flour is finely milled wheat or grains that is used for structural support in baked goods. Choosing the right flour for the right task will help your baked goods stand tall! Protein content is the main differentiator in different flours; higher protein flours provide more strength. All purpose flour has a moderate amount of protein making it the most flexible. Pastry flour has a low protein count, making it great for softer baked goods like pies, tarts, and cookies. Bread flour has the highest protein content making it strong enough to support yeasted breads.
+                </div>
+
                 <h3>Rising Agent</h3>
                 <div class="modal-body">
-                A rising agent is an ingredient that provides the air required for baked good to rise while in the oven. Yeast is responsible for the process of fermentation that results in things like beer, wine and bread. Baking soda reacts quickly and has a bubbling up effect where baking powder reacts in two phases and is often used in cakes and biscuits.
-                    </div>
-                
+                    A rising agent is an ingredient that provides the air required for baked good to rise while in the oven. Yeast is responsible for the process of fermentation that results in things like beer, wine and bread. Baking soda reacts quickly and has a bubbling up effect where baking powder reacts in two phases and is often used in cakes and biscuits.
+                </div>
+
                 <h3>Temperatures</h3>
                 <div class="modal-body">
-                Now that we’ve chosen the precise ingredients to structure our baked good we have to give it the right temperature to bake at. Cakes typically cook at lower temperature so that the outside doesn’t burn before the inside is fully cooked. Temperatures around 350 are ideal for the browning of sugars, and a bit higher temperatures are required to get breads to rise before the gluten sets in.
-                    </div>
+                    Now that we’ve chosen the precise ingredients to structure our baked good we have to give it the right temperature to bake at. Cakes typically cook at lower temperature so that the outside doesn’t burn before the inside is fully cooked. Temperatures around 350 are ideal for the browning of sugars, and a bit higher temperatures are required to get breads to rise before the gluten sets in.
+                </div>
 
-                
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Got it</button>
                 </div>
@@ -108,6 +107,9 @@
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="engine.js"></script>
 <script src="game.js"></script>
 
