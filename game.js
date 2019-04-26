@@ -16,6 +16,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     var bakedCake = 0;
     var bakedCookie = 0;
     var bakedBread = 0;
+    var bakedPie = 0;
     var tryCount = 0;
 
     // In this version, you create new states like this
@@ -33,6 +34,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#bounceBread").show();
             $("#bounceCake").show();
             $("#bounceCookie").show();
+            $("#bouncePie").show();
             updateScore();
 
         },
@@ -61,6 +63,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#bttn1").text("All Purpose Flour");
             $("#bttn2").text("Bread Flour");
             $("#bttn3").text("Pastry Flour");
+            $("#bttn4").hide();
         },
         function () {
             changeToState(state3);
@@ -78,6 +81,8 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#bttn1").text("Yeast");
             $("#bttn2").text("Baking Powder");
             $("#bttn3").text("Baking Soda");
+            $("#bttn4").show();
+            $("#bttn4").text("Egg");
         },
         function () {
             changeToState(state4);
@@ -90,6 +95,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     var state4 = new State("Baking Temperature",
         function () {
             console.log("Entering State 4");
+            $("#bttn4").hide();
             $("#ingredient").text("Now choose the baking temperature:");
             $("#bttn1").text("325");
             $("#bttn2").text("350");
@@ -110,6 +116,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             bakeItem();
             $("#dish").text("Baking Complete... " + bakingResult);
             $("#pun").text(pun);
+            //TODO add div to show help tips for fail screen
             $("#replay").show();
         },
         function () {
@@ -148,6 +155,13 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#bounceCookie").attr("src", "cookie.png");
             $("#score").text("Recipes Completed: " + score);
         }
+        
+        if (bakedPie == 1) {
+            score++;
+            bakedPie++;
+            $("#bouncePie").attr("src", "Pie.png");
+            $("#score").text("Recipes Completed: " + score);
+        }
 
         if (score == 3) {
             endGame();
@@ -156,7 +170,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     }
 
     function endGame() {
-        $("#instructions").text("You got baked! All three items completed!");
+        $("#instructions").text("You got baked! All four items completed!");
         $("#score").text("It took you " + tryCount + " trys.");
         $("#replay").hide();
         $("#start").hide();
@@ -177,6 +191,11 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             bakingResult = "It's a batch made in heaven! You made Cookies!";
             bakedCookie++;
             $("#cookie").show();
+        }
+        else if ((mixingBowl[0] == "Pastry Flour" || mixingBowl[0] == "All Purpose Flour") && mixingBowl[1] == "Egg" && mixingBowl[2] == "350") {
+            bakingResult = "I only have pies for you! You made Pie!";
+            bakedPie++;
+            $("#pie").show();
         }
         //If you have the right ingredients but use too high a temperature your cake will burn
         else if (mixingBowl[0] == "All Purpose Flour" && mixingBowl[1] == "Baking Powder" && mixingBowl[2] == "400") {
@@ -258,6 +277,17 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             mixingBowl[1] = "Baking Soda";
         } else if (machine.currentState.name == "Baking Temperature") {
             mixingBowl[2] = "400";
+        }
+        machine.update();
+        $('#output').text("Your Mixing Bowl: " + mixingBowl);
+    });
+    $("#bttn4").click(function () {
+        if (machine.currentState.name == "Flour") {
+            //mixingBowl[0] = "Pastry Flour";
+        } else if (machine.currentState.name == "Rising Agent") {
+            mixingBowl[1] = "Egg";
+        } else if (machine.currentState.name == "Baking Temperature") {
+            //mixingBowl[2] = "400";
         }
         machine.update();
         $('#output').text("Your Mixing Bowl: " + mixingBowl);
