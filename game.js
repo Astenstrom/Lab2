@@ -163,7 +163,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         if (bakedPie == 1) {
             score++;
             bakedPie++;
-            $("#bouncePie").attr("src", "Pie.png");
+            $("#bouncePie").attr("src", "pie.png");
             $("#score").text("Recipes Completed: " + score);
         }
 
