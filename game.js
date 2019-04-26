@@ -5,6 +5,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     //Hide the baking area until game begins
     $("#bakingArea").hide();
     $("#replay").hide();
+    $("#gameOver").hide();
 
     //Create an array to store ingredients 
     var mixingBowl = [];
@@ -178,6 +179,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
         $("#score").text("It took you " + tryCount + " trys.");
         $("#replay").hide();
         $("#start").hide();
+        $("#gameOver").show();
     }
 
     //Function to determine what item was baked
