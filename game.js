@@ -12,6 +12,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
     //Variable to store the baking result
     var bakingResult;
     var pun;
+    var helpText;
     var score = 0;
     var bakedCake = 0;
     var bakedCookie = 0;
@@ -30,6 +31,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             //Variable to store the baking result
             bakingResult = "";
             pun = "";
+            helpText = "";
             $("#starterImages").show();
             $("#bounceBread").show();
             $("#bounceCake").show();
@@ -59,6 +61,7 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             $("#bowl").show();
             $("#dish").text("");
             $("#pun").text("");
+            $("#helpText").text("");
             $("#ingredient").text("Choose a flour to add to your mixing bowl:");
             $("#bttn1").text("All Purpose Flour");
             $("#bttn2").text("Bread Flour");
@@ -116,8 +119,9 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             bakeItem();
             $("#dish").text("Baking Complete... " + bakingResult);
             $("#pun").text(pun);
-            //TODO add div to show help tips for fail screen
+            $("#helpText").text(helpText);
             $("#replay").show();
+            
         },
         function () {
 
@@ -197,22 +201,41 @@ $(document).ready(function () { //jQuery function that lets you define anonymous
             bakedPie++;
             $("#pie").show();
         }
+        //Fail scenarios with tips
         //If you have the right ingredients but use too high a temperature your cake will burn
-        else if (mixingBowl[0] == "All Purpose Flour" && mixingBowl[1] == "Baking Powder" && mixingBowl[2] == "400") {
+        else if (mixingBowl[0] == "All Purpose Flour" && mixingBowl[1] == "Baking Powder" && (mixingBowl[2] == "400" || mixingBowl[2] == "350") ) {
             bakingResult = "Oh no – Your cake is in tiers!";
-            //Use the code below to add a pun for a scenario
-            pun = "Try again. We know you're a whisk taker!";
+            helpText = "Try baking cake at a lower temperature.";
             $("#fail").show();
         }
         //If you forgot yeast in the bread flow it wont rise
-        else if (mixingBowl[0] == "Bread Flour" && (mixingBowl[1] == "Baking Powder" || mixingBowl[1] == "Baking Soda") && mixingBowl[2] == "400") {
-            bakingResult = "Your bread didn't rise, but you knead not fret! You can try again!";
+        else if (mixingBowl[0] == "Bread Flour" && (mixingBowl[1] == "Baking Powder" || mixingBowl[1] == "Baking Soda" || mixingBowl[1] == "Egg") && mixingBowl[2] == "400") {
+            bakingResult = "Your bread didn't rise, but you knead not fret!";
+            helpText = "Bread requires some kind of fermentation.";
+            $("#fail").show();
+        }
+        //if you have the right flour for pie but dont use egg it will rise
+        else if ((mixingBowl[0] == "All Purpose Flour" || mixingBowl[0] == "Pastry Flour") && (mixingBowl[1] == "Baking Powder" || mixingBowl[1] == "Baking Soda" || mixingBowl[1] == "Yeast") && mixingBowl[2] == "350") {
+            bakingResult = "You might not want fluffy pie crust. Try something more stable.";
+            $("#fail").show();
+        }
+        //if you bake cookies at 400 they will burn
+        else if (mixingBowl[0] == "Pastry Flour" && mixingBowl[1] == "Baking Soda" && mixingBowl[2] == "400") {
+            bakingResult = "You burnt your cookies.";
+            helpText = "Try baking at a lower temperature.";
+            $("#fail").show();
+        }
+        //if you bake pie at 400 it will burn
+        else if ((mixingBowl[0] == "All Purpose Flour" || mixingBowl[0] == "Pastry Flour")  && mixingBowl[1] == "Egg" && mixingBowl[2] == "400") {
+            bakingResult = "You burnt your pie!";
+            helpText = "Try baking at a lower temperature.";
             $("#fail").show();
         }
         //any other fail scenarios
         else {
             bakingResult = "Uh oh – Your cookie crumbled. You can try again dough!";
             $("#fail").show();
+            helpText = "Check out the help tab for guidance.";
         }
     }
 
